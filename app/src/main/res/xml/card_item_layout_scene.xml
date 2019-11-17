@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition android:id="@+id/motionShowCard"
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="400"
+        motion:motionInterpolator="easeInOut">
+       <KeyFrameSet>
+           <KeyAttribute
+               motion:motionTarget="@+id/imgFront"
+               motion:framePosition="0"
+               android:rotationX="60" />
+           <KeyAttribute
+               motion:motionTarget="@+id/imgFront"
+               motion:framePosition="100"
+               android:rotationX="0" />
+       </KeyFrameSet>
+        <OnClick motion:targetId="@+id/imgFront"/>
+    </Transition>
+
+    <Transition android:id="@+id/motionFlip"
+        motion:constraintSetStart="@id/end"
+        motion:constraintSetEnd="@+id/flip"
+        motion:duration="5000"
+        motion:transitionDisable="true">
+        <KeyFrameSet>
+            <KeyAttribute
+                motion:motionTarget="@+id/imgFront"
+                motion:framePosition="50"
+                android:rotationY="90" />
+            <KeyAttribute
+                motion:motionTarget="@+id/imgBack"
+                motion:framePosition="0"
+                android:alpha="0" />
+            <KeyAttribute
+                motion:motionTarget="@+id/imgBack"
+                motion:framePosition="50"
+                android:alpha="0"
+                android:rotationY="90" />
+            <KeyAttribute
+                motion:motionTarget="@+id/imgBack"
+                motion:framePosition="100"
+                android:rotationY="180" />
+            <KeyAttribute
+                motion:motionTarget="@+id/imgFront"
+                motion:framePosition="51"
+                android:alpha="0" />
+            <KeyAttribute
+                motion:motionTarget="@+id/imgFront"
+                motion:framePosition="100"
+                android:alpha="0" />
+            <KeyAttribute
+                motion:motionTarget="@+id/imgFront"
+                motion:framePosition="51"
+                android:rotationY="90" />
+            <KeyAttribute
+                motion:motionTarget="@+id/imgFront"
+                motion:framePosition="100"
+                android:rotationY="90" />
+            <KeyAttribute
+                motion:motionTarget="@+id/imgBack"
+                motion:framePosition="51"
+                android:alpha="1" />
+            <KeyAttribute
+                motion:motionTarget="@+id/imgFront"
+                motion:framePosition="50"
+                android:alpha="1" />
+            <KeyAttribute
+                motion:motionTarget="@+id/imgFront"
+                motion:framePosition="0"
+                android:alpha="1" />
+            <KeyAttribute
+                motion:motionTarget="@+id/imgFront"
+                motion:framePosition="0"
+                android:rotationX="0" />
+        </KeyFrameSet>
+        <OnSwipe
+            motion:touchAnchorId="@+id/imgFront"
+            motion:dragDirection="dragRight" />
+    </Transition>
+
+
+    <ConstraintSet android:id="@+id/start">
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/flip"/>
+
+</MotionScene>
